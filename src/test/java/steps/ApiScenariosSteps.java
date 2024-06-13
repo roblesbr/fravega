@@ -1,6 +1,7 @@
 package steps;
 
 import apis.BaseApiTest;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -34,7 +35,7 @@ public class ApiScenariosSteps {
         users.forEach(user -> System.out.println(user));
     }
 
-    @Then("^I filter the active users$")
+    @And("^I filter the active users$")
     public void filterActiveUsers() {
         // Filter the list of users to include only active users
         users = users.stream()
