@@ -7,7 +7,7 @@ Feature: Go Rest Api
     And I filter the active users
     And I get the details of the first active user
     And the user status should be "active"
-    And the response status code should be 200
+    Then the response status code should be 200
 
   Scenario: Get list of users and update the name of the first user
     Given I send a GET request to "https://gorest.co.in/public/v1/users"
