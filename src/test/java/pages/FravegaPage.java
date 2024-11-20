@@ -23,7 +23,7 @@ public class FravegaPage extends Page{
     private By categoriasLink = By.xpath("/html/body/div/div[2]/header/div[3]/div/div[1]/div[1]/span[1]");
     //private By tecnologiasMenu = By.xpath("xpath=//div[@id='__next']/div[2]/header/div[3]/div/div/div/div/div/div[2]/div/a");
 
-    private By tecnologiasMenu = By.xpath("\"//div[@id='__next']/div[2]/div/div/div/div/ul/li[3]/div/a/div/div/picture[2]/img");
+    private By tecnologiasMenu = By.linkText("Tecnología");
 
     private By samsungOption = By.xpath("//div[@id='__next']/div[2]/header/div[3]/div/div/div/div/div/div[2]/div[2]/div[2]/div[4]/div/a/span");
     private By searchBox = By.name("keyword");
@@ -45,17 +45,17 @@ public class FravegaPage extends Page{
 
         Thread.sleep(6000);
         acciones.moveToElement(driver.findElement(categoriasLink)).build().perform();
-        Thread.sleep(6000);
+        Thread.sleep(3000);
         driver.findElement(categoriasLink).click();
-        Thread.sleep(6000);
+        Thread.sleep(3000);
         acciones.moveToElement(driver.findElement(tecnologiasMenu)).build().perform();
-        Thread.sleep(6000);
+        Thread.sleep(3000);
     }
 
     public void clickSamsung() throws InterruptedException {
-        Thread.sleep(6000);
+        Thread.sleep(2000);
         acciones.moveToElement(driver.findElement(samsungOption)).build().perform();
-        Thread.sleep(6000);
+        Thread.sleep(2000);
         driver.findElement(samsungOption).click();
     }
 

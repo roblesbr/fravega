@@ -4,7 +4,12 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import pages.FravegaPage;
+
+import java.util.List;
 
 public class FravegaSteps extends FravegaPage {
 
@@ -50,7 +55,30 @@ public class FravegaSteps extends FravegaPage {
     }
 
     @Then("I verify that all displayed products belong to the {string} brand")
-    public void verifyProductsByBrand(String brand) {
-        // Implementación del paso para verificar que todos los productos son de la marca
+    public void verifyProductsByBrand(String brand) throws InterruptedException {
+        // Validar el título de categoría
+        Thread.sleep(5000);
+        WebElement categoryLabel = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/div[3]/div[3]/h1"));
+        Assert.assertTrue(categoryLabel.getText().contains(brand),
+                "La categoría no contiene la marca esperada: " + brand);
+
+        // Validar los filtros aplicados
+        WebElement appliedFilters = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/div[3]/div[4]/div[3]/div[2]/span"));
+        Assert.assertTrue(appliedFilters.getText().contains(brand),
+                "El filtro aplicado no contiene la marca esperada: " + brand);
+
+        // Validar cada producto listado
+        List<WebElement> products = driver.findElements(By.xpath("//span[@class='sc-ca346929-0 czeMAx']")); // XPath ajustado
+        Assert.assertFalse(products.isEmpty(), "No se encontraron productos en la página."); // Validación de productos visibles
+
+        for (WebElement product : products) {
+            String productName = product.getText();
+            Assert.assertTrue(productName.contains(brand),
+                    "El producto no pertenece a la marca esperada: " + productName);
+        }
+
+        System.out.println("Todos los productos pertenecen a la marca " + brand);
     }
+
+
 }
