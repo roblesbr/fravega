@@ -16,6 +16,10 @@ public class BasePage extends Page {
     private String getUrl() {return driver.getCurrentUrl(); }
     private String getPageSource() {return driver.getPageSource(); }
 
+
+
+
+
     public void navigateToBaseUrl() {
         String baseUrl = Settings.baseUrl;
         browser().navigate().to(baseUrl);

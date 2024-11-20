@@ -22,15 +22,17 @@ The project follows the Page Object Model (POM) design pattern, ensuring better 
 └── test
 ├── resources
 │ └── features
-│  └── AliExpress.feature
+│  └── Api.feature
+│  └── Fravega.feature
 ```
 
 
 ### Running Tests:
 
-To execute Selenium WebDriver test cases, run the following command with the name of the Cucumber feature file:
-
+In case you want to run selenium type: Fravega.feature
+If you want to run rest assured: Api.feature
 ```
-./gradlew cucumber -Pfeature=AliExpress.feature
+./gradlew cucumber -Pfeature=Fravega.feature or
+./gradlew cucumber -Pfeature=Api.feature
 ```
 

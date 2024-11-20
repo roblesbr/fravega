@@ -1,17 +1,11 @@
 @Api
 Feature: Go Rest Api
 
-  Scenario: Get list of users and validate the first active user
-    Given I send a GET request to "https://gorest.co.in/public/v1/users"
-    When I get the list of users
-    Then I filter the active users
-    And I get the details of the first active user
-    And the user status should be "active"
-    And the response status code should be 200
-
-  Scenario: Get list of users and update the name of the first user
-    Given I send a GET request to "https://gorest.co.in/public/v1/users"
-    When I get the list of users
-    And I get the details of the first user
-    And I update the user's name to "<INPUT NAME>" with email "jana.waters@hotmail.us" and status "active"
-    And the response status code should be 200
+  Scenario: Create a new user, retrieve the user list, and fetch user details
+    Given I have access to the GoRest API
+    When I send a POST request to create a new user with valid data
+    Then I should receive a 201 response and a user ID
+    When I send a GET request to fetch the list of users
+    Then I should receive a 200 response and a list containing the created user
+    When I send a GET request to fetch the details of the created user by ID
+    Then I should receive a 200 response with the correct user details
