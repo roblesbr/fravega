@@ -41,12 +41,11 @@ public class FravegaSteps extends FravegaPage {
 
     @When("I select the category {string}")
     public void select_Category(String category) throws InterruptedException {
-        clickCategorias();
         overTecnologias();
     }
 
     @And("I filter products by the brand {string}")
-    public void filterByBrand(String brand) {
+    public void filterByBrand(String brand) throws InterruptedException {
         clickSamsung();
     }
 

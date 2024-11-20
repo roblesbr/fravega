@@ -1,5 +1,7 @@
 package pages;
 
+import gherkin.lexer.Th;
+import org.graalvm.compiler.lir.amd64.AMD64ArrayCompareToOp;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,6 +17,8 @@ public class FravegaPage extends Page{
 
 
     public static WebDriver driver = browser();
+
+    Actions acciones = new Actions(driver);
     // Localizadores
     private By categoriasLink = By.xpath("/html/body/div/div[2]/header/div[3]/div/div[1]/div[1]/span[1]");
     //private By tecnologiasMenu = By.xpath("xpath=//div[@id='__next']/div[2]/header/div[3]/div/div/div/div/div/div[2]/div/a");
@@ -37,11 +41,21 @@ public class FravegaPage extends Page{
         Thread.sleep(6000);
     }
 
-    public void overTecnologias() {
-        driver.findElement(tecnologiasMenu).click();
+    public void overTecnologias() throws InterruptedException {
+
+        Thread.sleep(6000);
+        acciones.moveToElement(driver.findElement(categoriasLink)).build().perform();
+        Thread.sleep(6000);
+        driver.findElement(categoriasLink).click();
+        Thread.sleep(6000);
+        acciones.moveToElement(driver.findElement(tecnologiasMenu)).build().perform();
+        Thread.sleep(6000);
     }
 
-    public void clickSamsung() {
+    public void clickSamsung() throws InterruptedException {
+        Thread.sleep(6000);
+        acciones.moveToElement(driver.findElement(samsungOption)).build().perform();
+        Thread.sleep(6000);
         driver.findElement(samsungOption).click();
     }
 

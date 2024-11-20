@@ -11,8 +11,8 @@ Feature: Fravega
     Then I verify that the product is in the shopping cart
 
 
-    #Scenario: Filter products by category
-    #Given Im on the Fravega website
-    #When I select the category "Tecnologias"
-    #And I filter products by the brand "Samsung"
-    #Then I verify that all displayed products belong to the "Samsung" brand
+    Scenario: Filter products by category
+    Given Im on the Fravega website
+    When I select the category "Tecnologias"
+    And I filter products by the brand "Samsung"
+    Then I verify that all displayed products belong to the "Samsung" brand
